@@ -1,29 +1,37 @@
-# New Assignment Skill
+---
+name: new-assignment
+description: Create a new programming homework assignment for Mergington High School students. Use this skill whenever the user wants to create, add, scaffold, or generate a new assignment, exercise, or homework — even if they don't use the word "assignment" explicitly.
+---
 
-Purpose
-- Provide maintainers a simple, repeatable process for creating new assignment content that follows project standards and templates.
+# Create New Programming Assignment
 
-When to use
-- Use this skill when adding a new assignment under `assignments/<assignment-id>/`.
+Assignments live in `assignments/<id>/`, and the website reads `config.json` to display them. Follow these steps to create both.
 
-Files created
-- `assignments/<assignment-id>/README.md` — follow `templates/assignment-template.md` and include metadata (title, objective, tasks).
-- Optional: `assignments/<assignment-id>/solutions/` for instructor solutions (keep private/protected).
+## Step 1: Gather Requirements
 
-Recommended steps
-1. Copy `templates/assignment-template.md` to `assignments/<assignment-id>/README.md`.
-2. Fill metadata: title, objective, difficulty, estimated time, prerequisites, learning goals.
-3. Add tasks with Description and Requirements; include example I/O where helpful.
-4. Run site preview (if available) and verify styling and accessibility.
-5. If instructor solutions are added, place them in `assignments/<assignment-id>/solutions/` and do not expose them in student-facing files.
+If the user hasn't specified, ask what programming concept the assignment should cover.
 
-Scripts and references
-- Place any helper scripts for generating starter code in `.github/skills/new-assignment/scripts/`.
-- Keep reference materials (rubrics, sample datasets) in `.github/skills/new-assignment/references/`.
+> 📖 Read [references/assignment-guide.md](references/assignment-guide.md) for guidance on difficulty, scope, and when to include starter code.
 
-Tone and content rules
-- Student-facing files must be student-friendly, encouraging, and avoid full solutions.
-- Instructor materials must be clearly labeled and stored separately.
+## Step 2: Create the Assignment
 
-Contact
-- Tag maintainers or open an issue if unsure whether content should be instructor-only.
+1. Create `assignments/<kebab-case-id>/README.md` following the [assignment template](../../../templates/assignment-template.md)
+2. (Optional) Add starter code or data files to the same directory
+
+## Step 3: Register with the Website
+
+Use the bundled scripts — do NOT edit `config.json` manually.
+
+**Register the assignment:**
+
+    node .github/skills/new-assignment/scripts/update-config.js <id> "<title>" "<description>"
+
+**Register each file as an attachment** (starter code, data files, etc.):
+
+    node .github/skills/new-assignment/scripts/add-attachment.js <id> "<display-name>" <filename> <type>
+
+Common types: `python`, `csv`, `json`, `txt`, `html`
+
+## Step 4: Verify
+
+Confirm the assignment was registered correctly: check that `config.json` contains the new entry and that all created files exist on disk.
