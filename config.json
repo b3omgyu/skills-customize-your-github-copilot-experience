@@ -65,6 +65,25 @@
       "description": "Create a simple REST API using Python and FastAPI",
       "path": "assignments/fastapi-rest-api",
       "dueDate": "2026-06-18"
+    },
+    {
+      "id": "file-io-persistence",
+      "title": "Python File I/O and Persistence",
+      "description": "Read, write, and persist program data using text and JSON files.",
+      "path": "assignments/file-io-persistence",
+      "dueDate": "2026-07-05",
+      "attachments": [
+        {
+          "name": "Starter Code",
+          "file": "starter-code.py",
+          "type": "python"
+        },
+        {
+          "name": "Sample Text File",
+          "file": "data.txt",
+          "type": "text"
+        }
+      ]
     }
   ]
 }

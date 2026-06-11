@@ -1,0 +1,5 @@
+Hello, world!
+This is a sample text file for the Python file I/O assignment.
+Each line contains words that can be counted and analyzed.
+Python makes reading and writing files easy.
+Good luck with your assignment!
